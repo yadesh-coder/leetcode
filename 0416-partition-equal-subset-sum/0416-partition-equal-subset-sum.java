@@ -13,14 +13,11 @@ class Solution {
             for (int j=0;j<=target;j++){
                 if (i==0&&j==0){
                     dp[i][j]=true;
-                } 
-                else if(i==0){
+                }else if(i==0){
                     dp[i][j]=false;
-                }
-                else if(nums[i-1]>j){
+                }else if(nums[i-1]>j){
                     dp[i][j]=dp[i-1][j];
-                }
-                else {
+                }else {
                     dp[i][j]=dp[i-1][j]||dp[i-1][j-nums[i-1]];
                 }
             }
