@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 class Solution {
     private int lowerBound(List<Integer> arr, int target) {
         int low = 0;
