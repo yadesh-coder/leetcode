@@ -1,20 +1,32 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
-public int lengthOfLIS(int[] nums) {
-    if (nums == null || nums.length == 0) {
-        return 0;
-    }
-    int n = nums.length;
-    int[] dp = new int[n];
-    Arrays.fill(dp, 1);
-    int maxLIS = 1;
-    for (int i = 1; i < n; i++) {
-        for (int j = 0; j < i; j++) {
-            if (nums[i] > nums[j]) {
-                 dp[i] = Math.max(dp[i], dp[j] + 1);
+    private int lowerBound(List<Integer> arr, int target) {
+        int low = 0;
+        int high = arr.size() - 1;
+        int ans = arr.size(); 
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr.get(mid) >= target) {
+                ans = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
             }
         }
-        maxLIS = Math.max(maxLIS, dp[i]);
-      }
-    return maxLIS;
+        return ans;
+    }
+    public int lengthOfLIS(int[] nums) {
+        List<Integer> tails = new ArrayList<>();
+        for (int num : nums) {
+            int pos = lowerBound(tails, num);
+            if (pos == tails.size()) {
+                tails.add(num); 
+            } else {
+                tails.set(pos, num); 
+            }
+        }
+        return tails.size();
     }
 }
