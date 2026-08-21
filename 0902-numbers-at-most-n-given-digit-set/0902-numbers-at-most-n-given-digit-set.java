@@ -3,6 +3,7 @@ class Solution {
         String N=String.valueOf(n);
         int m=digits.length;
         int ans=0;
+        int a=99;
         for(int i=1;i<N.length();i++){
             ans=ans+(int)Math.pow(m,i);
         }
