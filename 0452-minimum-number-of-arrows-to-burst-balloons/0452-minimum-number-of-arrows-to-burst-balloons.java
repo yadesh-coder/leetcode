@@ -6,8 +6,8 @@ class Solution {
             if(ans==0||segments[i][0]>arrow){
                 ans++;
                 arrow=segments[i][1];
-            }
-        }
+            }    
+        }   
         return ans;
     }
 }
